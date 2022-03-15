@@ -31,7 +31,7 @@ const Category = () => {
 const List = styled.div`
   display: flex;
   align-items: center;
-  max-width: 700px;
+  max-width: 600px;
   justify-content: space-between;
   margin: auto;
 `;
