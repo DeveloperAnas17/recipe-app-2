@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import styled from "styled-components";
 
 const SearchPage = () => {
@@ -15,7 +15,6 @@ const SearchPage = () => {
       `https://api.spoonacular.com/recipes/complexSearch?apiKey=44bda745b1794914a31454b11a7cbc45&query=${name}`
     );
     const recipes = await data.json();
-    console.log(recipes.results);
     setSearchRecipes(recipes.results);
   };
   return (
@@ -23,8 +22,10 @@ const SearchPage = () => {
       {searchRecipes.map((item) => {
         return (
           <Card key={item.id}>
-            <img src={item.image} alt="" />
-            <h4>{item.title}</h4>
+            <Link to={"/recipe/" + item.id}>
+              <img src={item.image} alt="" />
+              <h4>{item.title}</h4>
+            </Link>
           </Card>
         );
       })}

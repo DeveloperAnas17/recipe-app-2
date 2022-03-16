@@ -12,7 +12,6 @@ const Cuisine = () => {
       `https://api.spoonacular.com/recipes/complexSearch?apiKey=44bda745b1794914a31454b11a7cbc45&cuisine=${name}`
     );
     const recipes = await data.json();
-    console.log(recipes.results);
     setCuisine(recipes.results);
   };
 
@@ -25,8 +24,10 @@ const Cuisine = () => {
       {cuisine.map((item) => {
         return (
           <Card key={item.id}>
-            <img src={item.image} alt="" className="" />
-            <h4>{item.title}</h4>
+            <Link to={"/recipe/" + item.id}>
+              <img src={item.image} alt="" className="" />
+              <h4>{item.title}</h4>
+            </Link>
           </Card>
         );
       })}
